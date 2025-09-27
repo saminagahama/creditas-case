@@ -1,0 +1,23 @@
+DATA_PATH = "data/raw/dataset.csv"
+MODEL_PATH = "modelo_ensemble.pkl" # OU "models/modelo_lightgbm.pkl"
+
+TARGET = 'sent_to_analysis'
+TEST_SIZE = 0.2
+RANDOM_STATE = 42
+
+FEATURES_TO_EXCLUDE = [
+    'id',
+    'pre_approved',
+    'zip_code',
+    'auto_model',
+    'landing_page',
+    'landing_page_product'
+]
+
+COLS_TO_DROP_IN_CLEANING = ['loan_term', 'marital_status', 'utm_term']
+
+DEBT_COLUMNS = [
+    'dishonored_checks', 'expired_debts', 'banking_debts',
+    'commercial_debts', 'protests', 'verified_restriction',
+    'informed_restriction'
+]
