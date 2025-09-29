@@ -1,6 +1,6 @@
 # Projeto de Priorização de Leads - Creditas Case
 
-Esta pasta contém uma pipeline de Machine Learning para prever a probabilidade de um cliente ser enviado para análise de crédito, otimizando a fila de atendimento da equipe de negócios.
+Este repositório contém uma pipeline de Machine Learning para prever a probabilidade de um cliente ser enviado para análise de crédito, otimizando a fila de atendimento da equipe de negócios.
 
 O projeto inclui notebooks para análise exploratória, uma pipeline de treinamento de modelos modularizada em scripts Python e scripts para realizar predições.
 
