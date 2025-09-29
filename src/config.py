@@ -1,5 +1,6 @@
 DATA_PATH = "data/raw/dataset.csv"
-MODEL_PATH = "modelo_ensemble.pkl" # OU "models/modelo_lightgbm.pkl"
+MODEL_PATH = "models/modelo_ensemble.pkl" # OU "models/modelo_lightgbm.pkl"
+MODEL_TYPE = "ensemble"  # "lightgbm" OU "ensemble"
 
 TARGET = 'sent_to_analysis'
 TEST_SIZE = 0.2
@@ -21,3 +22,6 @@ DEBT_COLUMNS = [
     'commercial_debts', 'protests', 'verified_restriction',
     'informed_restriction'
 ]
+
+# Threshold para classificação (probabilidade mínima para classe positiva)
+DEFAULT_THRESHOLD = 0.5

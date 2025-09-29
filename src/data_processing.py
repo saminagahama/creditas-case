@@ -9,7 +9,7 @@ def load_data(path):
 
 def _clean_data(df):
     df_cleaned = df.copy()
-    df_cleaned.drop(columns=COLS_TO_DROP_IN_CLEANING, inplace=True)
+    df_cleaned.drop(columns=COLS_TO_DROP_IN_CLEANING, inplace=True, errors='ignore')
 
     nan_imputation_numeric = {
         'collateral_debt': 0, 'verified_restriction': 0, 'informed_restriction': 0
@@ -34,13 +34,16 @@ def feature_engineering(df):
     
     df_eng['loan_to_income_ratio'] = df_eng['loan_amount'] / (df_eng['monthly_income'] + 1e-6)
     df_eng['loan_to_value_ratio'] = df_eng['loan_amount'] / (df_eng['collateral_value'] + 1e-6)
+    df_eng['income_to_value_ratio'] = df_eng['monthly_income'] / (df_eng['collateral_value'] + 1e-6)
     
-    df_eng['car_age'] = 2017 - df_eng['auto_year']
+    df_eng['car_age'] = df_eng['auto_year'].max() - df_eng['auto_year']
     
     return df_eng
 
 def preprocess_data(df):
-    df_processed = df[df['pre_approved'] == True].copy()
+    df_processed = df.copy()
+    if 'pre_approved' in df_processed.columns:
+        df_processed = df_processed[df_processed['pre_approved'] == True].copy()
     df_processed = _clean_data(df_processed)
     df_processed = feature_engineering(df_processed)
     
